@@ -1,2 +1,6 @@
 all:
-	@echo "Success"
+	ant clean
+	ant compile
+
+clean:
+	ant clean

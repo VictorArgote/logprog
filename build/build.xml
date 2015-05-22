@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<project>
+    <target name="clean">
+        <delete dir="read/classes" />
+	<delete dir="append/classes" />
+    </target>
+    <target name="compile">
+        <mkdir dir="read/classes"/>
+	<mkdir dir="append/classes" />
+        <javac srcdir="read/src" destdir="read/classes"/>
+	<javac srcdir="append/src" destdir="append/classes" />
+    </target>
+</project>
