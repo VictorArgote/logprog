@@ -5,7 +5,7 @@
   "commands": [
     {
       "program": "logread",
-      "args": ["-R", "-G", "OPAL"],
+      "args": ["-R", "-E", "OPAL"],
       "output": ""
     }
   ]
