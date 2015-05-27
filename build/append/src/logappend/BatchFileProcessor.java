@@ -8,7 +8,6 @@ package logappend;
 import cmd.CMDDataStructure;
 import cmd.CMDProcessor;
 import java.util.List;
-import security.Secret;
 
 /**
  *
@@ -27,10 +26,11 @@ public class BatchFileProcessor {
         ArgStringParser commader = new ArgStringParser();
         List<CMDDataStructure> commanderList = commader.loadCommanders(tasks);
 
-        CMDProcessor processor = new CMDProcessor(new Secret());
-        commanderList.stream().forEach((commander) -> {
+        CMDProcessor processor = new CMDProcessor();
+        for (CMDDataStructure commander : commanderList) {
             processor.process(commander);
-        }); //Success.show(0);
+        }
+        //Success.show(0);
     }
 
 }

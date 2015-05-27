@@ -33,7 +33,7 @@ public class LogHeader {
             }
 
         } catch (Exception ex) {
-            output.Error.show(255, "integrity violation");
+            output.Error.show(255, "integrity violation");;
         } finally {
             FileUtil.closeBuffer(br);
         }

@@ -64,31 +64,28 @@ public class LogQuery {
         return count <= 0;
     }
 
-    public List<String> userForRol(String rol) {
+    public List<String> userSystemForRol(String rol) {
 
-        //List<String> userSystem = new ArrayList();
-        List<String> users = null;
+        List<String> userSystem = new ArrayList();
         try {
-            users = LogCache.cache.stream()
+            List<String> users = LogCache.cache.stream()
                     .filter(x -> x.getRol().compareTo(rol) == 0)
                     .map(m -> m.getUser())
                     .distinct()
                     .collect(Collectors.toList());
 
-            /*
-             Data data;
-             for (String user : users) {
-             data = getPosition(user, rol);
-             if (data.getRoom() >= -1) {
-             userSystem.add(data.getUser());
-             }
-             }
-             */
+            Data data;
+            for (String user : users) {
+                data = getPosition(user, rol);
+                if (data.getRoom() >= -1) {
+                    userSystem.add(data.getUser());
+                }
+            }
+
         } catch (Exception e) {
             Error.show(4);
         }
-        //return userSystem;
-        return users;
+        return userSystem;
     }
 
     public void status() {
@@ -104,7 +101,7 @@ public class LogQuery {
         }; // change
 
         for (String role : roles) {
-            users = userForRol(role);
+            users = userSystemForRol(role);
             for (String user : users) {
                 Data userData = getPosition(user, role);
                 if (userData != null) {
@@ -169,12 +166,12 @@ public class LogQuery {
                     .filter(x -> x.getRol().compareTo(rol) == 0
                             && x.getUser().compareTo(user) == 0
                             && x.isArrive()
-                            && x.getRoom() > -1)
+                            && x.getRoom() > -1 )
                     .sorted(byTime)
                     .map(m -> String.valueOf(m.getRoom()))
                     //.distinct()
                     .collect(Collectors.toList());
-
+            
         } catch (Exception e) {
             Error.show(4);
         }

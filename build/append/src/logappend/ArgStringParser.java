@@ -22,13 +22,19 @@ public class ArgStringParser {
 
         List<CMDDataStructure> commanderList = new ArrayList<>();
 
-        taskList.stream().forEach((task) -> {
+        for (String task : taskList) {
             CMDDataReader parser = new CMDDataReader();
             if (parser.parse(task.split("\\s+"))) {
-                commanderList.add(parser.getDataStructure());
+                if (customValidate(parser.getDataStructure())) {
+                    commanderList.add(parser.getDataStructure());
+                }
             }
-        });
+        }
         return commanderList;
+    }
+
+    private boolean customValidate(CMDDataStructure commander) {
+        return true;
     }
 
 }

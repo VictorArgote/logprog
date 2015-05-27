@@ -50,18 +50,16 @@ public class LogCache {
     private void load(List<String> logs, String key) {
 
         LogCache.cache.clear();
-        logs.stream().map((log) -> {
+        for (String log : logs) {
+
             LogRecord logRecord = new LogRecord();
             logRecord.decode(log, key);
-            return logRecord;
-        }).map((logRecord) -> {
             if (!logIntegrity.checkLogRecord(logRecord, key)) {
                 Error.show(255, "integrity violation");
             }
-            return logRecord;
-        }).forEach((logRecord) -> {
+
             LogCache.cache.add(logRecord.getData());
-        });
+        }
 
     }
 

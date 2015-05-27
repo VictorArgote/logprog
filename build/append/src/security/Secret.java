@@ -5,6 +5,7 @@
  */
 package security;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ public class Secret {
     public Secret() {
         try {
             this.cipher = Cipher.getInstance("AES");
+
         } catch (NoSuchAlgorithmException | NoSuchPaddingException ex) {
             Error.show(255, "invalid");
         }

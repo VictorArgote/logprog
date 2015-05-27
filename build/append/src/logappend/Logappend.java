@@ -9,7 +9,6 @@ import cmd.CMDDataReader;
 import cmd.CMDProcessor;
 import output.Error;
 import output.Success;
-import security.Secret;
 
 /**
  *
@@ -29,7 +28,7 @@ public class Logappend {
         if (parameter.parse(args)) {
             String pathBatch = parameter.getDataStructure().getBatch();
             if (pathBatch == null) {
-                CMDProcessor cmdProcessor = new CMDProcessor(new Secret());
+                CMDProcessor cmdProcessor = new CMDProcessor();
                 cmdProcessor.process(parameter.getDataStructure());
             } else {
                 Error.silent = true;

@@ -16,8 +16,8 @@ import output.Error;
 // Salida: comando
 public class CMDDataReader {
 
-    private final CMDDataStructure dataStructure;
-    private final CMDValidate valide;
+    private CMDDataStructure dataStructure;
+    private CMDValidate valide;
 
     public CMDDataStructure getDataStructure() {
         return dataStructure;

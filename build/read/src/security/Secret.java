@@ -26,6 +26,7 @@ public class Secret {
     public Secret() {
         try {
             this.cipher = Cipher.getInstance("AES");
+
         } catch (NoSuchAlgorithmException | NoSuchPaddingException ex) {
             Error.show(255, "invalid");
         }

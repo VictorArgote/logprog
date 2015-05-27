@@ -11,6 +11,7 @@ import security.Secret;
 import Log.LogCache;
 import Log.LogIntegrity;
 import Log.LogWrite;
+import logappend.BatchFileProcessor;
 import output.Error;
 
 /**
@@ -20,18 +21,12 @@ import output.Error;
  // entrada: Lista de comandos
 // salida: ejecucion de comandos (escribir archivo y notificaar el resultado) 
 public class CMDProcessor {
-    
-    private Secret secret;
-    
-    public  CMDProcessor(Secret secret){
-        this.secret=secret;
-    }
-    
 
     public void process(CMDDataStructure commander) {
 
         Error.count = 0;
-        LogIntegrity logIntegrity = new LogIntegrity(this.secret);
+        Secret secret = new Secret();
+        LogIntegrity logIntegrity = new LogIntegrity(secret);
         LogCache logCache = new LogCache(logIntegrity);
         CMDMapping mappingCommand = new CMDMapping();
         LogRecord recordData = new LogRecord();
